@@ -1,0 +1,75 @@
+{
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript"
+    },
+    "editor.formatOnPaste": true,
+    // "editor.formatOnType": true,
+    // "editor.formatOnSave": true,
+    "emmet.includeLanguages": {
+        "wxml": "html"
+    },
+    "minapp-vscode.disableAutoConfig": true,
+    "cssrem.rootFontSize": 108,
+    "fileheader.customMade": {
+        //此为头部注释
+        "Date": "Do not edit",
+        "LastEditors": "PoloHuang",
+        "LastEditTime": "Do not edit"
+    },
+    "fileheader.cursorMode": {
+        //此为函数注释
+        "description": "",
+        "param": "",
+        "return": "",
+        "author": "PoloHuang"
+    },
+    // "window.zoomLevel": 1, // 窗口大小比例
+    // "editor.tabSize": 2,
+    // "editor.detectIndentation": false,
+    // "emmet.triggerExpansionOnTab": true,
+    // "update.channel": "none",
+    // "editor.formatOnSave": true, // eslint保存格式化
+    // "javascript.format.enable": false, // 不启动JavaScript格式化
+    "eslint.enable": true,
+    "eslint.autoFixOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.run": "onType",
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".vue",
+            ".ts"
+        ]
+    },
+    "eslint.validate": [
+        "javascript",
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        // "html",
+        "vue"
+    ],
+    "editor.fontWeight": "500",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 16,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.implicitProjectConfig.experimentalDecorators": true, //设置字体大小，这个不多说都明白
+    "prettier.semi": false,
+    "prettier.singleQuote": true,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "One Dark Pro" // 让prettier遵循eslint格式美化
+}
