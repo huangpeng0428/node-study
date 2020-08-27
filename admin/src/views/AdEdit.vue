@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2020-08-27 16:27:46
+ * @LastEditors: PoloHuang
+ * @LastEditTime: 2020-08-27 18:01:32
+-->
 <template>
   <div class="about">
     <h1>{{id ? '编辑' : '新建'}}广告位</h1>
@@ -25,7 +30,7 @@
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
             </el-form-item>
-            
+
             <el-form-item>
               <el-button size="small" type="danger" @click="model.items.splice(i, 1)">删除</el-button>
             </el-form-item>
@@ -42,36 +47,38 @@
 <script>
 export default {
   props: {
-    id: {}
+    id: {},
   },
   data() {
     return {
       model: {
-        items: []
-      }
-    };
+        items: [],
+      },
+    }
   },
   methods: {
     async save() {
-      let res;
+      let res
       if (this.id) {
-        res = await this.$http.put(`rest/ads/${this.id}`, this.model);
+        res = await this.$http.put(`rest/ads/${this.id}`, this.model)
       } else {
-        res = await this.$http.post("rest/ads", this.model);
+        res = await this.$http.post('rest/ads', this.model)
+        console.log(res)
       }
-      this.$router.push("/ads/list");
+      this.$router.push('/ads/list')
       this.$message({
-        type: "success",
-        message: "保存成功"
-      });
+        type: 'success',
+        message: '保存成功',
+      })
     },
     async fetch() {
-      const res = await this.$http.get(`rest/ads/${this.id}`);
-      this.model = Object.assign({}, this.model, res.data);
-    }
+      const res = await this.$http.get(`rest/ads/${this.id}`)
+      this.model = { ...this.model, ...res.data }
+    },
   },
   created() {
-    this.id && this.fetch();
-  }
-};
+    console.log(1)
+    this.id && this.fetch()
+  },
+}
 </script>
