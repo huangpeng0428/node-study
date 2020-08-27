@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2020-08-27 16:27:46
+ * @LastEditors: PoloHuang
+ * @LastEditTime: 2020-08-27 18:22:46
+-->
 <template>
   <div class="about">
     <h1>{{id ? '编辑' : '新建'}}物品</h1>
@@ -27,39 +32,41 @@
 <script>
 export default {
   props: {
-    id: {}
+    id: {},
   },
   data() {
     return {
-      model: {}
-    };
+      model: {},
+    }
   },
   methods: {
-    afterUpload(res){
+    afterUpload(res) {
       this.$set(this.model, 'icon', res.url)
+
       // this.model.icon = res.url
     },
     async save() {
-      let res;
+      let res
       if (this.id) {
-        res = await this.$http.put(`rest/items/${this.id}`, this.model);
+        res = await this.$http.put(`rest/items/${this.id}`, this.model)
       } else {
-        res = await this.$http.post("rest/items", this.model);
+        // eslint-disable-next-line no-unused-vars
+        res = await this.$http.post('rest/items', this.model)
       }
-      this.$router.push("/items/list");
+      this.$router.push('/items/list')
       this.$message({
-        type: "success",
-        message: "保存成功"
-      });
+        type: 'success',
+        message: '保存成功',
+      })
     },
     async fetch() {
-      const res = await this.$http.get(`rest/items/${this.id}`);
-      this.model = res.data;
-    }
+      const res = await this.$http.get(`rest/items/${this.id}`)
+      this.model = res.data
+    },
   },
   created() {
-    this.id && this.fetch();
-  }
-};
+    this.id && this.fetch()
+  },
+}
 </script>
 

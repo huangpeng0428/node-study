@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-08-27 16:11:55
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-08-27 16:48:15
+ * @LastEditTime: 2020-08-27 18:28:50
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -71,6 +71,7 @@ const router = new Router({
     },
   ],
 })
+// eslint-disable-next-line consistent-return
 router.beforeEach((to, from, next) => {
   if (!to.meta.isPublic && !localStorage.token) {
     return next('/login')

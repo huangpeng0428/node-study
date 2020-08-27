@@ -67,12 +67,11 @@
 
       <el-main>
         <router-view :key="$route.path"></router-view>
-        
+
       </el-main>
     </el-container>
   </el-container>
 </template>
-
 
 <style>
 .el-header {
@@ -90,13 +89,13 @@
 export default {
   data() {
     const item = {
-      date: "2016-05-02",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1518 弄"
-    };
+      date: '2016-05-02',
+      name: '王小虎',
+      address: '上海市普陀区金沙江路 1518 弄',
+    }
     return {
-      tableData: Array(20).fill(item)
-    };
-  }
-};
+      tableData: Array(20).fill(item),
+    }
+  },
+}
 </script>

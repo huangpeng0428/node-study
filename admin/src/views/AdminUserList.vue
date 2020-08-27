@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-08-27 16:27:46
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-08-27 18:03:22
+ * @LastEditTime: 2020-08-27 18:26:03
 -->
 <template>
   <div>
@@ -41,7 +41,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning',
       }).then(async() => {
-        const res = await this.$http.delete(`rest/admin_users/${row._id}`)
+        // eslint-disable-next-line no-underscore-dangle
+        await this.$http.delete(`rest/admin_users/${row._id}`)
         this.$message({
           type: 'success',
           message: '删除成功!',

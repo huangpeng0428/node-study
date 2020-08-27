@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2020-08-27 15:58:02
+ * @LastEditors: PoloHuang
+ * @LastEditTime: 2020-08-27 18:30:05
+-->
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
@@ -34,8 +39,8 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+    msg: String,
+  },
 }
 </script>
 

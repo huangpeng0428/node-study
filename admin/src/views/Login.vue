@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2020-08-27 16:27:46
+ * @LastEditors: PoloHuang
+ * @LastEditTime: 2020-08-27 18:22:04
+-->
 <template>
   <div class="login-container">
     <el-card header="请先登录" class="login-card">
@@ -11,30 +16,31 @@
         <el-form-item>
           <el-button type="primary" native-type="submit">登录</el-button>
         </el-form-item>
-        
+
       </el-form>
     </el-card>
   </div>
 </template>
 <script>
 export default {
-  data(){
+  data() {
     return {
-      model: {}
+      model: {},
     }
   },
   methods: {
-    async login(){
+    async login() {
       const res = await this.$http.post('login', this.model)
+
       // sessionStorage.token = res.data.token
       localStorage.token = res.data.token
       this.$router.push('/')
       this.$message({
         type: 'success',
-        message: '登录成功'
+        message: '登录成功',
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

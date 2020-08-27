@@ -1,35 +1,37 @@
 /*
  * @Date: 2020-08-27 16:16:58
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-08-27 16:20:13
+ * @LastEditTime: 2020-08-27 18:29:52
  */
 import axios from 'axios'
 import Vue from 'vue'
 import router from '../router'
 
-
 const http = axios.create({
   baseURL: process.env.VUE_APP_API_URL || '/admin/api',
+
   // baseURL: 'http://localhost:3000/admin/api'
 })
 
 http.interceptors.request.use(
-  function(config) {
+  (config) => {
+
     // Do something before request is sent
     if (localStorage.token) {
-      config.headers.Authorization = 'Bearer ' + localStorage.token
+      // eslint-disable-next-line no-param-reassign
+      config.headers.Authorization = `Bearer ${localStorage.token}`
     }
     return config
   },
-  function(error) {
+  (error) =>
+
     // Do something with request error
-    return Promise.reject(error)
-  }
+     // eslint-disable-next-line implicit-arrow-linebreak
+     Promise.reject(error)
+  ,
 )
 http.interceptors.response.use(
-  (res) => {
-    return res
-  },
+  (res) => res,
   (err) => {
     if (err.response.data.message) {
       Vue.prototype.$message({
@@ -43,7 +45,7 @@ http.interceptors.response.use(
     }
 
     return Promise.reject(err)
-  }
+  },
 )
 
 export default http

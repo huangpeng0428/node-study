@@ -46,27 +46,27 @@
               ></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="难度">
-            <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.difficult"></el-rate>
-          </el-form-item>
-          <el-form-item label="技能">
-            <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.skills"></el-rate>
-          </el-form-item>
-          <el-form-item label="攻击">
-            <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.attack"></el-rate>
-          </el-form-item>
-          <el-form-item label="生存">
-            <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.survive"></el-rate>
-          </el-form-item>
+  <el-form-item label="难度">
+  <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.difficult"></el-rate>
+  </el-form-item>
+  <el-form-item label="技能">
+    <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.skills"></el-rate>
+  </el-form-item>
+  <el-form-item label="攻击">
+    <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.attack"></el-rate>
+  </el-form-item>
+  <el-form-item label="生存">
+    <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.survive"></el-rate>
+  </el-form-item>
 
           <el-form-item label="顺风出装">
             <el-select v-model="model.items1" multiple>
-              <el-option v-for="item of items" :key="item._id" :label="item.name" :value="item._id"></el-option>
+  <el-option v-for="item of items" :key="item._id" :label="item.name" :value="item._id"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="逆风出装">
             <el-select v-model="model.items2" multiple>
-              <el-option v-for="item of items" :key="item._id" :label="item.name" :value="item._id"></el-option>
+  <el-option v-for="item of items" :key="item._id" :label="item.name" :value="item._id"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="使用技巧">
@@ -113,7 +113,7 @@
                 <el-input v-model="item.tips" type="textarea"></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button size="small" type="danger" @click="model.skills.splice(i, 1)">删除</el-button>
+      <el-button size="small" type="danger" @click="model.skills.splice(i, 1)">删除</el-button>
               </el-form-item>
             </el-col>
           </el-row>
@@ -127,7 +127,7 @@
             <el-col :md="12" v-for="(item, i) in model.partners" :key="i">
               <el-form-item label="英雄">
                 <el-select filterable v-model="item.hero">
-                  <el-option 
+                  <el-option
                   v-for="hero in heroes"
                   :key="hero._id"
                   :value="hero._id"
@@ -139,7 +139,7 @@
                 <el-input v-model="item.description" type="textarea"></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button size="small" type="danger" @click="model.partners.splice(i, 1)">删除</el-button>
+          <el-button size="small" type="danger" @click="model.partners.splice(i, 1)">删除</el-button>
               </el-form-item>
             </el-col>
           </el-row>
@@ -155,7 +155,7 @@
 <script>
 export default {
   props: {
-    id: {}
+    id: {},
   },
   data() {
     return {
@@ -163,54 +163,56 @@ export default {
       items: [],
       heroes: [],
       model: {
-        name: "",
-        avatar: "",
+        name: '',
+        avatar: '',
         skills: [],
         partners: [],
         scores: {
-          difficult: 0
-        }
-      }
-    };
+          difficult: 0,
+        },
+      },
+    }
   },
   methods: {
     async save() {
-      let res;
+      let res
       if (this.id) {
-        res = await this.$http.put(`rest/heroes/${this.id}`, this.model);
+        res = await this.$http.put(`rest/heroes/${this.id}`, this.model)
       } else {
-        res = await this.$http.post("rest/heroes", this.model);
+        // eslint-disable-next-line no-unused-vars
+        res = await this.$http.post('rest/heroes', this.model)
       }
+
       // this.$router.push("/heroes/list");
       this.$message({
-        type: "success",
-        message: "保存成功"
-      });
+        type: 'success',
+        message: '保存成功',
+      })
     },
     async fetch() {
-      const res = await this.$http.get(`rest/heroes/${this.id}`);
-      this.model = Object.assign({}, this.model, res.data);
+      const res = await this.$http.get(`rest/heroes/${this.id}`)
+      this.model = { ...this.model, ...res.data }
     },
     async fetchCategories() {
-      const res = await this.$http.get(`rest/categories`);
-      this.categories = res.data;
+      const res = await this.$http.get('rest/categories')
+      this.categories = res.data
     },
     async fetchItems() {
-      const res = await this.$http.get(`rest/items`);
-      this.items = res.data;
+      const res = await this.$http.get('rest/items')
+      this.items = res.data
     },
     async fetchHeroes() {
-      const res = await this.$http.get(`rest/heroes`);
-      this.heroes = res.data;
-    }
+      const res = await this.$http.get('rest/heroes')
+      this.heroes = res.data
+    },
   },
   created() {
-    this.fetchItems();
-    this.fetchCategories();
-    this.fetchHeroes();
-    this.id && this.fetch();
-  }
-};
+    this.fetchItems()
+    this.fetchCategories()
+    this.fetchHeroes()
+    this.id && this.fetch()
+  },
+}
 </script>
 
 <style>

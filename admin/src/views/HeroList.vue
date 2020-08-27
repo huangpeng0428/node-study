@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2020-08-27 16:27:46
+ * @LastEditors: PoloHuang
+ * @LastEditTime: 2020-08-27 18:23:23
+-->
 <template>
   <div>
     <h1>英雄列表</h1>
@@ -28,32 +33,33 @@
 export default {
   data() {
     return {
-      items: []
-    };
+      items: [],
+    }
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("rest/heroes");
-      this.items = res.data;
+      const res = await this.$http.get('rest/heroes')
+      this.items = res.data
     },
     remove(row) {
-      this.$confirm(`是否确定要删除分类 "${row.name}"`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      }).then(async () => {
-        const res = await this.$http.delete(`rest/heroes/${row._id}`);
+      this.$confirm(`是否确定要删除分类 "${row.name}"`, '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(async() => {
+        // eslint-disable-next-line no-underscore-dangle
+        await this.$http.delete(`rest/heroes/${row._id}`)
         this.$message({
-          type: "success",
-          message: "删除成功!"
-        });
-        this.fetch();
-      });
-    }
+          type: 'success',
+          message: '删除成功!',
+        })
+        this.fetch()
+      })
+    },
   },
   created() {
-    this.fetch();
-  }
-};
+    this.fetch()
+  },
+}
 </script>
 

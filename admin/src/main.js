@@ -1,12 +1,12 @@
 /*
  * @Date: 2020-08-27 15:58:02
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-08-27 16:28:29
+ * @LastEditTime: 2020-08-27 18:29:22
  */
 import Vue from 'vue'
+import Element from 'element-ui'
 import App from './App.vue'
 import router from './router'
-import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import http from './lib/http'
 

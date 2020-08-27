@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-08-27 16:27:46
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-08-27 17:55:42
+ * @LastEditTime: 2020-08-27 18:26:10
 -->
 <template>
   <div class="about">
@@ -30,30 +30,31 @@ export default {
     return {
       model: {},
 
-    };
+    }
   },
   methods: {
     async save() {
-      let res;
+      let res
       if (this.id) {
-        res = await this.$http.put(`rest/admin_users/${this.id}`, this.model);
+        res = await this.$http.put(`rest/admin_users/${this.id}`, this.model)
       } else {
-        res = await this.$http.post('rest/admin_users', this.model);
+        // eslint-disable-next-line no-unused-vars
+        res = await this.$http.post('rest/admin_users', this.model)
       }
-      this.$router.push('/admin_users/list');
+      this.$router.push('/admin_users/list')
       this.$message({
         type: 'success',
         message: '保存成功',
-      });
+      })
     },
     async fetch() {
-      const res = await this.$http.get(`rest/admin_users/${this.id}`);
-      this.model = res.data;
+      const res = await this.$http.get(`rest/admin_users/${this.id}`)
+      this.model = res.data
     },
 
   },
   created() {
-    this.id && this.fetch();
+    this.id && this.fetch()
   },
-};
+}
 </script>
