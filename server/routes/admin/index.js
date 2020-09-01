@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-08-27 15:26:55
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-08-27 15:27:08
+ * @LastEditTime: 2020-09-01 17:03:34
  */
 module.exports = (app) => {
   const express = require('express')
@@ -44,11 +44,11 @@ module.exports = (app) => {
     res.send(model)
   })
   // 登录校验中间件
-  const authMiddleware = require('../../middleware/auth')
+  // const authMiddleware = require('../../middleware/auth')
   const resourceMiddleware = require('../../middleware/resource')
   app.use(
     '/admin/api/rest/:resource',
-    authMiddleware(),
+    // authMiddleware(),
     resourceMiddleware(),
     router
   )
@@ -68,7 +68,7 @@ module.exports = (app) => {
   })
   app.post(
     '/admin/api/upload',
-    authMiddleware(),
+    // authMiddleware(),
     upload.single('file'),
     async (req, res) => {
       const file = req.file
