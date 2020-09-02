@@ -1,14 +1,14 @@
 <!--
  * @Date: 2020-08-27 16:27:46
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-08-27 18:24:35
+ * @LastEditTime: 2020-09-02 11:03:04
 -->
 <template>
   <div>
     <h1>分类列表</h1>
     <el-table :data="items">
       <el-table-column prop="_id" label="ID" width="240"></el-table-column>
-      <el-table-column prop="parent.name" label="上级分类"></el-table-column>
+      <!-- <el-table-column prop="parent.name" label="上级分类"></el-table-column> -->
       <el-table-column prop="name" label="分类名称"></el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">

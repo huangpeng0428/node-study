@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-08-27 15:26:55
  * @LastEditors: PoloHuang
- * @LastEditTime: 2020-09-01 17:03:34
+ * @LastEditTime: 2020-09-02 10:43:08
  */
 module.exports = (app) => {
   const express = require('express')
@@ -14,6 +14,7 @@ module.exports = (app) => {
 
   // 创建资源
   router.post('/', async (req, res) => {
+    console.log(req.Model.modelName)
     const model = await req.Model.create(req.body)
     res.send(model)
   })
@@ -32,10 +33,12 @@ module.exports = (app) => {
   // 资源列表
   router.get('/', async (req, res) => {
     const queryOptions = {}
+    console.log(req.Model.modelName)
     if (req.Model.modelName === 'Category') {
       queryOptions.populate = 'parent'
     }
     const items = await req.Model.find().setOptions(queryOptions).limit(100)
+    console.log(items)
     res.send(items)
   })
   // 资源详情
